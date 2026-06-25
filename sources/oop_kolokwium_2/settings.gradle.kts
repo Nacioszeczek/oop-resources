@@ -1,0 +1,1 @@
+rootProject.name = "oop_kolokwium_2"
