@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Chapter&nbsp;1.&nbsp;Introduction</title>
+      <link rel="stylesheet" type="text/css" href="javaspec.css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+      <link rel="home" href="index.html" title="The Java&reg; Virtual Machine Specification">
+      <link rel="up" href="index.html" title="The Java&reg; Virtual Machine Specification">
+      <link rel="prev" href="index.html" title="The Java&reg; Virtual Machine Specification">
+      <link rel="next" href="jvms-2.html" title="Chapter&nbsp;2.&nbsp;The Structure of the Java Virtual Machine">
+      <link rel="copyright" href="spec-frontmatter.html" title="Legal Notice">
+   </head>
+   <body>
+      <div id="logo"><img src="oralogo_small.gif" alt="Oracle Logo"><br><p><a href="https://docs.oracle.com/en/java/javase/26/">Java SE</a> &gt; <a href="../index.html">Java SE Specifications</a> &gt; <a href="index.html">Java Virtual Machine Specification</a></p>
+      </div>
+      <div class="navheader">
+         <table style="width:100%">
+            <tr>
+               <th colspan="3" style="text-align:center">Chapter&nbsp;1.&nbsp;Introduction</th>
+            </tr>
+            <tr>
+               <td style="width:20%; text-align:left"><a accesskey="p" href="index.html">Prev</a>&nbsp;
+               </td>
+               <th style="width:60%; text-align:center">&nbsp;</th>
+               <td style="width:20%; text-align:right">&nbsp;<a accesskey="n" href="jvms-2.html">Next</a></td>
+            </tr>
+         </table>
+         <hr>
+      </div>
+      <div lang="en" class="chapter" id="jvms-1">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h1 class="title">Chapter&nbsp;1.&nbsp;Introduction</h1>
+               </div>
+            </div>
+         </div>
+         <div class="toc">
+            <p><b>Table of Contents</b></p>
+            <dl class="toc">
+               <dt><span class="section"><a href="jvms-1.html#jvms-1.1">1.1. A Bit of History</a></span></dt>
+               <dt><span class="section"><a href="jvms-1.html#jvms-1.2">1.2. The Java Virtual Machine</a></span></dt>
+               <dt><span class="section"><a href="jvms-1.html#jvms-1.3">1.3. Organization of the Specification</a></span></dt>
+               <dt><span class="section"><a href="jvms-1.html#jvms-1.4">1.4. Notation</a></span></dt>
+               <dt><span class="section"><a href="jvms-1.html#jvms-1.5">1.5. Preview Features</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="jvms-1.html#jvms-1.5.1">1.5.1. Restrictions on the Use of Preview Features</a></span></dt>
+                     <dt><span class="section"><a href="jvms-1.html#jvms-1.5.2">1.5.2. Current Preview VM Features</a></span></dt>
+                  </dl>
+               </dd>
+               <dt><span class="section"><a href="jvms-1.html#jvms-1.6">1.6. Feedback</a></span></dt>
+            </dl>
+         </div>
+         <div class="section" id="jvms-1.1">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both">1.1.&nbsp;A Bit of History</h2>
+                  </div>
+               </div>
+            </div>
+            <p id="jvms-1.1-100" class="norm">The <span class="trademark">Java</span>&reg; programming language is a
+               general-purpose, concurrent, object-oriented language. Its syntax is
+               similar to C and C++, but it omits many of the features that make C
+               and C++ complex, confusing, and unsafe. The Java platform was
+               initially developed to address the problems of building software for
+               networked consumer devices. It was designed to support multiple host
+               architectures and to allow secure delivery of software components. To
+               meet these requirements, compiled code had to survive transport across
+               networks, operate on any client, and assure the client that it was
+               safe to run.
+            </p>
+            <p id="jvms-1.1-110" class="norm">The popularization of the
+               World Wide Web made these attributes much more interesting. Web
+               browsers enabled millions of people to surf the Net and access
+               media-rich content in simple ways. At last there was a medium where
+               what you saw and heard was essentially the same regardless of the
+               machine you were using and whether it was connected to a fast network
+               or a slow modem.
+            </p>
+            <p id="jvms-1.1-120" class="norm">Web enthusiasts soon
+               discovered that the content supported by the Web's HTML document
+               format was too limited. HTML extensions, such as forms, only
+               highlighted those limitations, while making it clear that no browser
+               could include all the features users wanted. Extensibility was the
+               answer.
+            </p>
+            <p id="jvms-1.1-130" class="norm">The HotJava
+               browser first showcased the interesting properties of the Java programming language
+               and platform by making it possible to embed programs inside HTML
+               pages. Programs are transparently downloaded into the browser along
+               with the HTML pages in which they appear. Before being accepted by the
+               browser, programs are carefully checked to make sure they are
+               safe. Like HTML pages, compiled programs are network- and
+               host-independent. The programs behave the same way regardless of where
+               they come from or what kind of machine they are being loaded into and
+               run on.
+            </p>
+            <p id="jvms-1.1-140" class="norm">A Web browser incorporating
+               the Java platform is no longer limited to a predetermined set of
+               capabilities. Visitors to Web pages incorporating dynamic content can
+               be assured that their machines cannot be damaged by that
+               content. Programmers can write a program once, and it will run on any
+               machine supplying a Java run-time environment.
+            </p>
+         </div>
+         <div class="section" id="jvms-1.2">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both">1.2.&nbsp;The Java Virtual Machine</h2>
+                  </div>
+               </div>
+            </div>
+            <p id="jvms-1.2-100" class="norm">
+               The Java Virtual Machine is the cornerstone of the Java platform.
+               It is the component of the technology responsible for its hardware- and
+               operating system-independence, the small size of its compiled code, and its
+               ability to protect users from malicious programs.
+            </p>
+            <p id="jvms-1.2-110" class="norm">
+               The Java Virtual Machine is an abstract computing machine.
+               Like a real computing machine, it has an instruction set and manipulates various
+               memory areas at run time.
+               It is reasonably common to implement a programming language using a virtual
+               machine; the best-known virtual machine may be the P-Code machine of UCSD
+               Pascal.
+            </p>
+            <p id="jvms-1.2-120" class="norm">
+               The first prototype implementation of the Java Virtual Machine, done at Sun Microsystems, Inc.,
+               emulated the Java Virtual Machine instruction set in software hosted by a handheld device that
+               resembled a contemporary Personal Digital Assistant (PDA).
+               Oracle's current implementations emulate the Java Virtual Machine on mobile, desktop and server
+               devices, but the Java Virtual Machine does not assume any particular implementation technology,
+               host hardware, or host operating system.
+               It is not inherently interpreted, but can just as well be implemented by
+               compiling its instruction set to that of a silicon CPU. It may also be
+               implemented in microcode or directly in silicon.
+            </p>
+            <p id="jvms-1.2-130" class="norm">
+               The Java Virtual Machine knows nothing of the Java programming language, only of a particular binary format,
+               the <code class="literal">class</code> file format.
+               A <code class="literal">class</code> file contains Java Virtual Machine instructions (or <span class="emphasis"><em>bytecodes</em></span>)
+               and a symbol table, as well as other ancillary information. 
+            </p>
+            <p id="jvms-1.2-140" class="norm">
+               For the sake of security, the Java Virtual Machine imposes strong syntactic and structural
+               constraints on the code in a <code class="literal">class</code> file.
+               However, any language with functionality that can be expressed in terms of a
+               valid <code class="literal">class</code> file can be hosted by the Java Virtual Machine.
+               Attracted by a generally available, machine-independent platform, implementors
+               of other languages can turn to the Java Virtual Machine as a delivery vehicle for their
+               languages.
+            </p>
+            <p id="jvms-1.2-150" class="norm">
+               The <code class="literal">class</code> file format is versioned: every <code class="literal">class</code> file declares a version
+               number, of the form <span class="emphasis"><em>major</em></span>.<span class="emphasis"><em>minor</em></span>,
+               which indicates the file's dependency on a particular release of Java SE, and
+               influences the interpretation of the file by the Java Virtual Machine.
+               
+            </p>
+            <p id="jvms-1.2-160" class="norm">
+               The Java Virtual Machine specified here is compatible with Java SE 26, and supports the
+               Java programming language specified in <em class="citetitle">The Java Language Specification, Java SE 26 Edition</em>.
+               It supports <code class="literal">class</code> files with major version numbers 45 through 70,
+               inclusive.
+            </p>
+            <p id="jvms-1.2-200" class="norm">
+               Tools that generate <code class="literal">class</code> files will typically adopt the latest major version
+               number in order to take advantage of the latest features; but a <code class="literal">class</code> file
+               with an older major version number can generally expect to be supported in
+               future Java Virtual Machine releases.
+            </p>
+            <p id="jvms-1.2-210" class="norm">
+               For reference, the following table shows the <code class="literal">class</code> file major version numbers
+               supported by each release of Java SE, up to Java SE 26.
+               The third column, "Earliest", shows the earliest <code class="literal">class</code> file major version
+               number supported by the Java Virtual Machine in that release.
+               The fourth column, "Latest", shows the latest <code class="literal">class</code> file major version number
+               supported by the Java Virtual Machine in that release.
+               (For very early releases, the JDK version is shown instead of the Java SE
+               release.)
+            </p>
+            <div class="table" id="jvms-1.2-220">
+               <p class="title"><b>Table&nbsp;1.2-A.&nbsp;Java SE releases &amp; <code class="literal">class</code> file major versions</b></p>
+               <div class="table-contents">
+                  <table class="table" border="1">
+                     <colgroup>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                     </colgroup>
+                     <thead>
+                        <tr>
+                           <th>Java SE</th>
+                           <th>Released</th>
+                           <th>Earliest</th>
+                           <th>Latest</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td>1.0.2</td>
+                           <td>May 1996</td>
+                           <td>45</td>
+                           <td>45</td>
+                        </tr>
+                        <tr>
+                           <td>1.1</td>
+                           <td>February 1997</td>
+                           <td>45</td>
+                           <td>45</td>
+                        </tr>
+                        <tr>
+                           <td>1.2</td>
+                           <td>December 1998</td>
+                           <td>45</td>
+                           <td>46</td>
+                        </tr>
+                        <tr>
+                           <td>1.3</td>
+                           <td>May 2000</td>
+                           <td>45</td>
+                           <td>47</td>
+                        </tr>
+                        <tr>
+                           <td>1.4</td>
+                           <td>February 2002</td>
+                           <td>45</td>
+                           <td>48</td>
+                        </tr>
+                        <tr>
+                           <td>5.0</td>
+                           <td>September 2004</td>
+                           <td>45</td>
+                           <td>49</td>
+                        </tr>
+                        <tr>
+                           <td>6</td>
+                           <td>December 2006</td>
+                           <td>45</td>
+                           <td>50</td>
+                        </tr>
+                        <tr>
+                           <td>7</td>
+                           <td>July 2011</td>
+                           <td>45</td>
+                           <td>51</td>
+                        </tr>
+                        <tr>
+                           <td>8</td>
+                           <td>March 2014</td>
+                           <td>45</td>
+                           <td>52</td>
+                        </tr>
+                        <tr>
+                           <td>9</td>
+                           <td>September 2017</td>
+                           <td>45</td>
+                           <td>53</td>
+                        </tr>
+                        <tr>
+                           <td>10</td>
+                           <td>March 2018</td>
+                           <td>45</td>
+                           <td>54</td>
+                        </tr>
+                        <tr>
+                           <td>11</td>
+                           <td>September 2018</td>
+                           <td>45</td>
+                           <td>55</td>
+                        </tr>
+                        <tr>
+                           <td>12</td>
+                           <td>March 2019</td>
+                           <td>45</td>
+                           <td>56</td>
+                        </tr>
+                        <tr>
+                           <td>13</td>
+                           <td>September 2019</td>
+                           <td>45</td>
+                           <td>57</td>
+                        </tr>
+                        <tr>
+                           <td>14</td>
+                           <td>March 2020</td>
+                           <td>45</td>
+                           <td>58</td>
+                        </tr>
+                        <tr>
+                           <td>15</td>
+                           <td>September 2020</td>
+                           <td>45</td>
+                           <td>59</td>
+                        </tr>
+                        <tr>
+                           <td>16</td>
+                           <td>March 2021</td>
+                           <td>45</td>
+                           <td>60</td>
+                        </tr>
+                        <tr>
+                           <td>17</td>
+                           <td>September 2021</td>
+                           <td>45</td>
+                           <td>61</td>
+                        </tr>
+                        <tr>
+                           <td>18</td>
+                           <td>March 2022</td>
+                           <td>45</td>
+                           <td>62</td>
+                        </tr>
+                        <tr>
+                           <td>19</td>
+                           <td>September 2022</td>
+                           <td>45</td>
+                           <td>63</td>
+                        </tr>
+                        <tr>
+                           <td>20</td>
+                           <td>March 2023</td>
+                           <td>45</td>
+                           <td>64</td>
+                        </tr>
+                        <tr>
+                           <td>21</td>
+                           <td>September 2023</td>
+                           <td>45</td>
+                           <td>65</td>
+                        </tr>
+                        <tr>
+                           <td>22</td>
+                           <td>March 2024</td>
+                           <td>45</td>
+                           <td>66</td>
+                        </tr>
+                        <tr>
+                           <td>23</td>
+                           <td>September 2024</td>
+                           <td>45</td>
+                           <td>67</td>
+                        </tr>
+                        <tr>
+                           <td>24</td>
+                           <td>March 2025</td>
+                           <td>45</td>
+                           <td>68</td>
+                        </tr>
+                        <tr>
+                           <td>25</td>
+                           <td>September 2025</td>
+                           <td>45</td>
+                           <td>69</td>
+                        </tr>
+                        <tr>
+                           <td>26</td>
+                           <td>March 2026</td>
+                           <td>45</td>
+                           <td>70</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div><br class="table-break"></div>
+         <div class="section" id="jvms-1.3">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both">1.3.&nbsp;Organization of the Specification</h2>
+                  </div>
+               </div>
+            </div>
+            <p id="jvms-1.3-100" class="norm">Chapter 2 gives an overview of
+               the Java Virtual Machine architecture.
+            </p>
+            <p id="jvms-1.3-110" class="norm">Chapter 3 introduces
+               compilation of code written in the Java programming language into the instruction set
+               of the Java Virtual Machine.
+            </p>
+            <p id="jvms-1.3-120" class="norm">Chapter 4 specifies the
+               <code class="literal">class</code> file format, the hardware- and operating system-independent
+               binary format used to represent compiled classes and
+               interfaces.
+            </p>
+            <p id="jvms-1.3-130" class="norm">Chapter 5 specifies the
+               start-up of the Java Virtual Machine and the loading, linking, and initialization of
+               classes and interfaces.
+            </p>
+            <p id="jvms-1.3-140" class="norm">Chapter 6 specifies the
+               instruction set of the Java Virtual Machine, presenting the instructions in
+               alphabetical order of opcode mnemonics.
+            </p>
+            <p id="jvms-1.3-150" class="norm">Chapter 7 gives a table of
+               Java Virtual Machine opcode mnemonics indexed by opcode value.
+            </p>
+            <p id="jvms-1.3-200" class="norm">In the Second Edition of
+               <em class="citetitle">The <span class="trademark">Java</span>&reg; Virtual Machine Specification</em>, Chapter 2 gave an overview of the Java programming language that was
+               intended to support the specification of the Java Virtual Machine but was not itself
+               a part of the specification. In <em class="citetitle">The Java Virtual Machine Specification, Java SE 26 Edition</em>, the reader is referred to
+               <em class="citetitle">The Java Language Specification, Java SE 26 Edition</em> for information about the Java programming language.
+            </p>
+            <p id="jvms-1.3-210" class="norm">In the Second Edition of
+               <em class="citetitle">The <span class="trademark">Java</span>&reg; Virtual Machine Specification</em>, Chapter 8 detailed the low-level actions that explained the
+               interaction of Java Virtual Machine threads with a shared main memory.  In <em class="citetitle">The Java Virtual Machine Specification, Java SE 26 Edition</em>, the reader is referred to Chapter 17 of
+               <em class="citetitle">The Java Language Specification, Java SE 26 Edition</em> for information about threads and locks. Chapter 17
+               reflects <em class="citetitle">The Java Memory Model and Thread
+                  Specification</em> produced by the JSR 133 Expert Group.
+            </p>
+         </div>
+         <div class="section" id="jvms-1.4">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both">1.4.&nbsp;Notation</h2>
+                  </div>
+               </div>
+            </div>
+            <p id="jvms-1.4-100" class="norm">Throughout this specification,
+               we refer to classes and interfaces drawn from the Java SE Platform API.
+               Whenever we refer to a class or interface (other than those declared
+               in an example) using a single identifier <code class="varname">N</code>, the intended reference
+               is to the class or interface named <code class="varname">N</code> in the package <code class="literal">java.lang</code>. We
+               use the fully qualified name for classes or interfaces from packages
+               other than <code class="literal">java.lang</code>.
+            </p>
+            <p id="jvms-1.4-110" class="norm">Whenever we refer to a class
+               or interface that is declared in the package <code class="literal">java</code>
+               or any of its subpackages, the intended reference is to that class or
+               interface as loaded by the bootstrap class loader
+               (<a class="xref" href="jvms-5.html#jvms-5.3.1" title="5.3.1.&nbsp;Loading Using the Bootstrap Class Loader">&sect;5.3.1</a>).
+            </p>
+            <p id="jvms-1.4-120" class="norm">Whenever we refer to a
+               subpackage of a package named <code class="literal">java</code>, the intended
+               reference is to that subpackage as determined by the bootstrap class
+               loader.
+            </p>
+            <p id="jvms-1.4-130" class="norm">A cross-reference within this
+               specification is shown as (&sect;x.y). Occasionally, we refer to concepts
+               in the <em class="citetitle">The Java Language Specification, Java SE 26 Edition</em> via cross-references of the form (JLS &sect;x.y).
+            </p>
+            <p id="jvms-1.4-200" class="norm">The use of fonts in this
+               specification is as follows:
+            </p>
+            <div class="norm">
+               <ul class="norm" style="list-style-type: disc; ">
+                  <li class="listitem">
+                     <p id="jvms-1.4-200-A" class="norm">
+                              A <code class="literal">fixed width</code> font is used for Java Virtual Machine data
+                              types, exceptions, errors, <code class="literal">class</code> file structures, Prolog code,
+                              and Java code fragments.
+                     </p>
+                  </li>
+                  <li class="listitem">
+                     <p id="jvms-1.4-200-B" class="norm">
+                              <span class="emphasis"><em>Italic</em></span> is used for Java Virtual Machine "assembly
+                              language", its opcodes and operands, as well as items in the
+                              Java Virtual Machine's run-time data areas. It is also used to introduce new
+                              terms and simply for emphasis.
+                     </p>
+                  </li>
+               </ul>
+            </div>
+            <p id="jvms-1.4-300" class="norm">Non-normative text, designed
+               to clarify the normative text of this specification, is given in
+               smaller, indented text.
+            </p>
+            <p class="note">This is non-normative text. It provides intuition,
+               rationale, advice, examples, etc.
+            </p>
+         </div>
+         <div class="section" id="jvms-1.5">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both">1.5.&nbsp;Preview Features</h2>
+                  </div>
+               </div>
+            </div>
+            <p id="jvms-1.5-100" class="norm">
+               A <span class="emphasis"><em>preview feature</em></span> is:
+            </p>
+            <div class="norm">
+               <ul class="norm" style="list-style-type: disc; ">
+                  <li class="listitem">
+                     <p id="jvms-1.5-100-A" class="norm">
+                              a new feature of the Java programming language ("preview language feature"), or
+                     </p>
+                  </li>
+                  <li class="listitem">
+                     <p id="jvms-1.5-100-B" class="norm">
+                              a new feature of the Java Virtual Machine ("preview VM feature"), or
+                     </p>
+                  </li>
+                  <li class="listitem">
+                     <p id="jvms-1.5-100-C" class="norm">
+                              a new module, package, class, interface, field, method, constructor,
+                              or enum constant in the <code class="literal">java.*</code> or
+                              <code class="literal">javax.*</code> namespace ("preview API")
+                     </p>
+                  </li>
+               </ul>
+            </div>
+            <p id="jvms-1.5-110" class="norm">
+               that is fully specified, fully implemented, and yet impermanent.
+               It is available in implementations of a given release of the
+               Java SE Platform to provoke developer feedback based on real world use;
+               this may lead to it becoming permanent in a future release of the
+               Java SE Platform.
+            </p>
+            <p id="jvms-1.5-200" class="norm">
+               The preview features defined by a given release of the Java SE Platform are
+               enumerated in the Java SE Platform Specification for that release. The preview
+               features are specified as follows:
+            </p>
+            <div class="norm">
+               <ul class="norm" style="list-style-type: disc; ">
+                  <li class="listitem">
+                     <p id="jvms-1.5-200-A" class="norm">
+                              Preview language features are specified in standalone documents that
+                              indicate changes ("diffs") to <em class="citetitle">The <span class="trademark">Java</span>&reg; Language Specification</em> for that release. The
+                              specifications of preview language features are incorporated into
+                              <em class="citetitle">The <span class="trademark">Java</span>&reg; Language Specification</em> by reference, and made a part thereof, if and only if preview
+                              features are enabled at compile time.
+                     </p>
+                  </li>
+                  <li class="listitem">
+                     <p id="jvms-1.5-200-B" class="norm">
+                              Preview VM features are specified in standalone documents that
+                              indicate changes ("diffs") to <em class="citetitle">The <span class="trademark">Java</span>&reg; Virtual Machine Specification</em> for that release. The
+                              specifications of preview VM features are incorporated into
+                              <em class="citetitle">The <span class="trademark">Java</span>&reg; Virtual Machine Specification</em> by reference, and made a part thereof, if and only if preview
+                              features are enabled at run time.
+                     </p>
+                  </li>
+                  <li class="listitem">
+                     <p id="jvms-1.5-200-C" class="norm">
+                              Preview APIs are specified within the Java SE API Specification for
+                              that release.
+                     </p>
+                  </li>
+               </ul>
+            </div>
+            <div class="section" id="jvms-1.5.1">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">1.5.1.&nbsp;Restrictions on the Use of Preview Features</h3>
+                     </div>
+                  </div>
+               </div>
+               <p id="jvms-1.5.1-100" class="norm">
+                  Implementations of the Java SE Platform disable, at both compile time and
+                  run time, the preview features defined by a given release, unless
+                  the user indicates via the host system, at both compile time and run
+                  time, that preview features are enabled.
+                  Implementations do not provide a way to enable only some of the given
+                  release's preview features.
+               </p>
+               <p id="jls-1.5.1-200" class="norm">
+                  A <code class="literal">class</code> file <span class="emphasis"><em>depends on the preview features of Java SE
+                        <code class="varname">N</code></em></span> (<code class="varname">N</code> <span class="symbol">&#8805;</span> 12) if:
+               </p>
+               <div class="norm">
+                  <ul class="norm" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p id="jvms-1.5.1-200-A" class="norm">
+                               the <code class="literal">class</code> file's major version number is the latest major version number
+                               supported by Java SE <code class="varname">N</code> in <a class="xref" href="jvms-1.html#jvms-1.2-220" title="Table&nbsp;1.2-A.&nbsp;Java SE releases &amp; class file major versions">Table&nbsp;1.2-A</a>, and
+                        </p>
+                     </li>
+                     <li class="listitem">
+                        <p id="jvms-1.5.1-200-B" class="norm">
+                               the <code class="literal">class</code> file's minor version number is 65535
+                        </p>
+                     </li>
+                  </ul>
+               </div>
+               <p class="note">
+                   For example, a <code class="literal">class</code> file with version number 66.65535 depends on the preview
+                   features of Java SE 22, because 66 is the latest major version number supported
+                   by Java SE 22.
+               </p>
+               <p class="note">
+                  Compilers may need to emit <code class="literal">class</code> files that depend on the preview features of
+                  a given release even if the <code class="literal">class</code> files do not use any preview VM features.
+                  For example, a Java source file that uses a preview language feature of the
+                  release must be compiled to a <code class="literal">class</code> file that depends on the preview features
+                  of the release.
+               </p>
+               <p id="jvms-1.5.1-210" class="norm">
+                  At run time, the rules for loading a <code class="literal">class</code> file that depends on the preview
+                  features of a given Java SE Platform release are specified in
+                  <a class="xref" href="jvms-4.html#jvms-4.1" title="4.1.&nbsp;The ClassFile Structure">&sect;4.1</a>.
+                  Such a <code class="literal">class</code> file is tied to that release of the Java SE Platform, and cannot be
+                  loaded on any other release (even if preview features are enabled) because the
+                  preview features it depends on may be different or missing in the other
+                  release.
+               </p>
+            </div>
+            <div class="section" id="jvms-1.5.2">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">1.5.2.&nbsp;Current Preview VM Features</h3>
+                     </div>
+                  </div>
+               </div>
+               <p id="jls-1.5.2-100" class="norm">
+                  Java SE 26 does not define any preview VM features.
+               </p>
+            </div>
+         </div>
+         <div class="section" id="jvms-1.6">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both">1.6.&nbsp;Feedback</h2>
+                  </div>
+               </div>
+            </div>
+            <p id="jvms-1.6-100" class="norm">
+               Readers are invited to report technical errors and ambiguities in <em class="citetitle">The <span class="trademark">Java</span>&reg; Virtual Machine Specification</em>
+               to <code class="literal">jls-jvms-spec-comments@openjdk.org</code>.
+            </p>
+            <p id="jvms-1.6-110" class="norm">
+               Questions concerning the generation and manipulation of <code class="literal">class</code> files
+               by <code class="literal">javac</code> (the reference compiler for the Java programming language)
+               may be sent to <code class="literal">compiler-dev@openjdk.org</code>.
+            </p>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr>
+         <table style="width:100%">
+            <tr>
+               <td style="width:40%; text-align:left"><a accesskey="p" href="index.html">Prev</a>&nbsp;
+               </td>
+               <td style="width:20%; text-align:center">&nbsp;</td>
+               <td style="width:40%; text-align:right">&nbsp;<a accesskey="n" href="jvms-2.html">Next</a></td>
+            </tr>
+            <tr>
+               <td style="width:40%; text-align:left; vertical-align:top">The <span class="trademark">Java</span>&reg; Virtual Machine Specification&nbsp;
+               </td>
+               <td style="width:20%; text-align:center"><a accesskey="h" href="index.html">Home</a></td>
+               <td style="width:40%; text-align:right; vertical-align:top">&nbsp;Chapter&nbsp;2.&nbsp;The Structure of the Java Virtual Machine</td>
+            </tr>
+         </table>
+      </div>
+      <div class="navfooter">
+         <hr><a href="spec-frontmatter.html">
+                Legal Notice
+              </a></div>
+   </body>
+</html>
